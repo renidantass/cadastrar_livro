@@ -3,7 +3,8 @@ include 'model/Manager.class.php';
 
 $errors = [
 	"book_added" => "Livro adicionado com sucesso ao banco de dados, obrigado :')",
-	"book_deleted" => "Livro apagado com sucesso!"
+	"book_deleted" => "Livro apagado com sucesso!",
+	"book_edited" => "Livro editado!"
 ];
 
 $Manager = new Manager();
@@ -17,7 +18,7 @@ $Manager = new Manager();
 </head>
 <body>
 	<div class="container">
-		<div class="row mt-2">
+		<div class="row my-2">
 			<div class="col-md-12">
 				<?php
 					echo (!empty($_GET)) ? "<div class='alert alert-warning'>".$errors[array_keys($_GET)[0]]."</div>" : "";
@@ -25,7 +26,7 @@ $Manager = new Manager();
 				<div class="card">
 					<div class="card-header">
 						<a href="view/registro.php">
-							<button class="btn btn-secondary"><i class="fa fa-book"></i> Cadastrar livro</button>
+							<button class="btn btn-success"><i class="fa fa-book"></i> Cadastrar livro</button>
 						</a>
 					</div>
 					<div class="card-body">
@@ -33,7 +34,17 @@ $Manager = new Manager();
 						<ul class="list-group">
 							<?php foreach($Manager->listBooks("livros") as $book): ?>
 								<li class="list-group-item">
-									<a href="<?=$book['url']?>" target='_blank'><?=$book['nome']?></a> do ISBN <a href='https://www.google.com/search?q=<?=$book['isbn']?>' target='_blank'><?=$book['isbn']?></a> por <?=$book['autor']?>
+									<div class="col-md-12">
+										<div class="row">
+											<div class="col-md-10">
+												<a href="<?=$book['url']?>" target='_blank'><?=$book['nome']?></a> do ISBN <a href='https://www.google.com/search?q=<?=$book['isbn']?>' target='_blank'><?=$book['isbn']?></a> por <?=$book['autor']?>
+											</div>
+											<div class="col-md-2 text-center">
+												<a href="view/editar.php?z=<?=$book['id']?>"><button class="btn btn-sm btn-outline-info"><i class="fa fa-pen"></i></button></a>
+												<a href="controller/deletar.php?z=<?=$book['id']?>"><button class="btn btn-sm btn-outline-danger"><i class="fa fa-times"></i></button></a>
+											</div>
+										</div>
+									</div>
 								</li>
 							<?php endforeach; ?>
 						</ul>

@@ -1,7 +1,7 @@
 <?php include_once 'dependencias.php' ?>
 
 <div class="container">
-	<div class="row mt-2">
+	<div class="row my-2">
 		<div class="col-md-12">
 			<div class="card">
 				<div class="card-header">
