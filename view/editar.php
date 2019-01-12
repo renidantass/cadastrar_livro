@@ -47,7 +47,8 @@ if ((isset($_GET['z']) && (!empty($_GET['z'])))) {
 							<input type="text" name="url" id="url" class="form-control" placeholder="Ex.: www.drive.google.com/fDSAdsz8" value="<?=$bookInfo['url']?>" required>
 						</div>
                         <input type="hidden" name="id" value="<?=$bookInfo['id']?>">
-						<input type="submit" value="Editar" class="btn btn-primary">
+						<button class="btn btn-light active" onclick="javascript:history.back()-1">Voltar</button>
+						<input type="submit" value="Editar" class="btn btn-info active float-right">
 					</form>
                     <?php endforeach; ?>
 				</div>

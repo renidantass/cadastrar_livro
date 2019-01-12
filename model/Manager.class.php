@@ -13,7 +13,7 @@ class Manager extends Connection {
 		}
 		$result = $statement->execute();
 		if ($result) {
-			header("Location: ../index.php?book_added");
+			header("Location: ../index.php");
 		}
 	}
 
@@ -39,7 +39,7 @@ class Manager extends Connection {
 		}
 		$result = $statement->execute();
 		if ($result) {
-			header("Location: ../index.php?book_edited");
+			header("Location: ../index.php");
 		}
 	}
 
@@ -49,9 +49,6 @@ class Manager extends Connection {
 		$statement = $pdo->prepare("DELETE FROM $table WHERE id = :id");
 		$statement->bindValue(":id", $id);
 		$result = $statement->execute();
-		if ($result) {
-			header("Location: ../index.php?book_deleted");
-		}
 	}
 
 	// conseguir informações do livro
